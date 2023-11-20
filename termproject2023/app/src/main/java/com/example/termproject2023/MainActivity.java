@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
        if (mAuth.getCurrentUser() == null){
            getSupportFragmentManager().beginTransaction()
-                   .add(R.id.contentView, new LogInFragment())
+                   .add(R.id.contentView, new WelcomeFragment())
                    .commit();
        }else{
            getSupportFragmentManager().beginTransaction()

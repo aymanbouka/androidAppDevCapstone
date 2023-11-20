@@ -95,7 +95,7 @@ public class RegisterFragment extends Fragment {
         view.findViewById(R.id.buttonCancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.contentView, new LogInFragment())
+                getParentFragmentManager().beginTransaction().replace(R.id.contentView, new WelcomeFragment())
                         .commit();
             }
         });

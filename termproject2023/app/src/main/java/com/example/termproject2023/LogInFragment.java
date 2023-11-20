@@ -73,7 +73,7 @@ public class LogInFragment extends Fragment {
                                 Log.d("demo", "onComplete: logged in successful ");
                                 Log.d("demo", "onComplete: logged in successful " + mAuth.getCurrentUser().getUid());
 
-                                getFragmentManager().beginTransaction().replace(R.id.contentView, new MainHomeFragment())
+                                getParentFragmentManager().beginTransaction().replace(R.id.contentView, new MainHomeFragment())
                                         .commit();
 
 

@@ -52,7 +52,7 @@ public class MainHomeFragment extends Fragment implements BottomNavigationView.O
 
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnItemSelectedListener(this);
 
         return view;
     }
@@ -63,17 +63,17 @@ public class MainHomeFragment extends Fragment implements BottomNavigationView.O
             case R.id.home:
                 // Handle Home item selection
                 // For example, replace the current fragment with a HomeFragment
-                getFragmentManager().beginTransaction().replace(R.id.contentView, new MainHomeFragment()).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.contentView, new MainHomeFragment()).commit();
                 return true;
             case R.id.profile:
                 // Handle Profile item selection
                 // For example, replace the current fragment with a ProfileFragment
-                getFragmentManager().beginTransaction().replace(R.id.contentView, new ProfileFragment()).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.contentView, new ProfileFragment()).commit();
                 return true;
             case R.id.events:
                 // Handle Events item selection
                 // For example, replace the current fragment with an EventsFragment
-                getFragmentManager().beginTransaction().replace(R.id.contentView, new EventsFragment()).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.contentView, new EventsFragment()).commit();
                 return true;
             default:
                 return false;
