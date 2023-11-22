@@ -15,6 +15,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 //import com.example.termproject2023.databinding.ActivityMainBinding;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,6 +54,7 @@ public class MainHomeFragment extends Fragment implements BottomNavigationView.O
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_home, container, false);
+
 
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);

@@ -9,7 +9,7 @@
     tools:context=".EditProfileFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewOfUser"
         android:layout_width="75dp"
         android:layout_height="68dp"
         android:layout_marginStart="24dp"
@@ -26,18 +26,9 @@
         android:layout_marginTop="16dp"
         android:text="upload Image"
         android:textSize="8sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewOfUser"
+        app:layout_constraintStart_toEndOf="@+id/imageViewOfUser"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonImageSelect"
-        android:layout_width="136dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="4dp"
-        android:text="Select Image"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="@+id/buttonUploadImage"
-        app:layout_constraintTop_toBottomOf="@+id/buttonUploadImage" />
 
     <TextView
         android:id="@+id/textView"
@@ -46,8 +37,8 @@
         android:layout_marginTop="32dp"
         android:text="Edit Bio"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="@+id/imageViewOfUser"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOfUser" />
 
     <EditText
         android:id="@+id/editTextTextBio"
@@ -82,25 +73,36 @@
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <ImageButton
-        android:id="@+id/imageButtonSaveBio"
-        android:layout_width="50dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        android:src="?android:attr/textCheckMark"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextBio"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextBio"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextBio" />
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButtonSaveUsername"
-        android:layout_width="48dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:src="?android:attr/textCheckMark"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonUserName"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonUserName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonUserName" />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Interests"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonUserName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonUserName" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonInterests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="update interests"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonUserName"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
