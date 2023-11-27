@@ -85,6 +85,6 @@ public class MainHomeFragment extends Fragment implements BottomNavigationView.O
                 return false;
 
     }
-
    }//end of nav_selected
+
 }//end of class
