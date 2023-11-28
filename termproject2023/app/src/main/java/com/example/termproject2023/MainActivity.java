@@ -2,6 +2,7 @@ package com.example.termproject2023;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
@@ -14,12 +15,8 @@ public class MainActivity extends AppCompatActivity implements EventsFragment.Ev
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
-
        mAuth = FirebaseAuth.getInstance();
-
        if (mAuth.getCurrentUser() == null){
            getSupportFragmentManager().beginTransaction()
                    .add(R.id.contentView, new LogInFragment())
@@ -29,11 +26,7 @@ public class MainActivity extends AppCompatActivity implements EventsFragment.Ev
                    .add(R.id.contentView, new MainHomeFragment())
                    .commit();
        }
-
-
-
     }
-
 
     @Override
     public void viewMoreEventDetails(Event event) {
@@ -48,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements EventsFragment.Ev
                 .replace(R.id.contentView, new MyPersonalEventsFragment())
                 .commit();
     }
-
 
     @Override
     public void goToProfile() {

@@ -5,7 +5,7 @@
     android:id="@+id/userName"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D1CDCD"
+    android:background="#E8F5E9"
     tools:context=".ProfileFragment">
 
 
@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Log out"
+        android:backgroundTint="#1B5E20"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -27,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@drawable/emptyuser" />
 
     <TextView
         android:id="@+id/textViewUserName"
@@ -35,6 +36,7 @@
         android:layout_height="33dp"
         android:layout_marginTop="24dp"
         android:text="Username"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
@@ -49,6 +51,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:backgroundTint="#1B5E20"
         android:text="Edit"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,58 +59,58 @@
 
     <Button
         android:id="@+id/buttonModeratorOnlyAccess"
-        android:layout_width="365dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:background="#9F9595"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="#1B5E20"
+        android:visibility="invisible"
         android:text="Send Announcments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewBio"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBio" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserName" />
 
     <TextView
         android:id="@+id/textViewInterests"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Interests"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/buttonModeratorOnlyAccess"
-        app:layout_constraintTop_toBottomOf="@+id/buttonModeratorOnlyAccess" />
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:text="Interests:"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBio" />
 
     <TextView
         android:id="@+id/textViewRecievedNotification"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Notifications"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textViewInterests"
+        android:layout_margin="10dp"
+        android:text="Notifications:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/textViewInterests" />
 
     <TextView
         android:id="@+id/textViewBio"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="User bio"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:text="Your bio:"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonModeratorOnlyAccess" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="378dp"
-        android:layout_height="176dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogout"
+        android:layout_width="360dp"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRecievedNotification" >
+        app:layout_constraintTop_toBottomOf="@+id/textViewRecievedNotification" />
 
-    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -119,5 +122,17 @@
         app:menu="@menu/bottom_nav_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
