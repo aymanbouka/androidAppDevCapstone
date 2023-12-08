@@ -113,9 +113,23 @@ public class EventFragment extends Fragment {
                 data.put("host",event.getHost());
                 data.put("userId", mAuth.getCurrentUser().getUid());
 
-                DocumentReference documentReference = db.collection("User").document();
+                DocumentReference documentReference = db.collection("UsersEvents").document();
 
                 documentReference.set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            mListner.goToPersonalEvents();
+                        }else {
+                            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+                DocumentReference documentReferenceForPastEvent = db.collection("UsersPastEvent").document();
+
+                documentReferenceForPastEvent.set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
@@ -162,5 +176,6 @@ public class EventFragment extends Fragment {
 
     interface ListOfPersonalEvents{
         void goToPersonalEvents();
+
     }
 }

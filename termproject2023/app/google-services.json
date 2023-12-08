@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "168930833423",
-    "project_id": "capstonefinalprojectiteration",
-    "storage_bucket": "capstonefinalprojectiteration.appspot.com"
+    "project_number": "1006838846194",
+    "project_id": "termprojectcapstone",
+    "storage_bucket": "termprojectcapstone.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:168930833423:android:dd054b5e70ac440eebdf7a",
+        "mobilesdk_app_id": "1:1006838846194:android:14c9ef61ed00aa3acdb66b",
         "android_client_info": {
           "package_name": "com.example.termproject2023"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAxwA0_-nfn8NOIW7sJWeLfTER5CMaL_wg"
+          "current_key": "AIzaSyDXd5wj0daQx6xr2tBodJqXi4mmofzA730"
         }
       ],
       "services": {

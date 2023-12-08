@@ -28,10 +28,8 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="YOUR_API_KEY" />-->
-<!--        <meta-data android:name="com.google.android.geo.AIzaSyBOG4JlwEt_6nA2XgrHzG1unw0r1OAuMaY" />-->
+
+
 
         <activity
             android:name=".MainActivity"
@@ -42,6 +40,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="API-KEY"/>
+<!--            INSERT API-KEY HERE ^-->
+
+
     </application>
 
 </manifest>

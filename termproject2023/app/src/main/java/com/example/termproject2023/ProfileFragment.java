@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment implements BottomNavigationView.On
                 Toast.makeText(getActivity(), "Failed to fetch data from database...", Toast.LENGTH_SHORT).show();
             }
         });
-        if(mAuth.getCurrentUser().getEmail().toString().equals("yashsomething@gmail.com"))//TODO : Change email to moderator's email
+        if(mAuth.getCurrentUser().getEmail().toString().equals("moderator@gmail.com"))//TODO : Change email to moderator's email
         {
             binding.buttonModeratorOnlyAccess.setVisibility(View.VISIBLE);
         }
@@ -117,6 +117,14 @@ public class ProfileFragment extends Fragment implements BottomNavigationView.On
             }
         });
 
+        binding.buttonPastEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.contentView, new PastEventsFragment()).addToBackStack(null)
+                        .commit();
+            }
+        });
+
         return binding.getRoot();
     }
     @Override
@@ -137,7 +145,7 @@ public class ProfileFragment extends Fragment implements BottomNavigationView.On
                                 binding.textViewBio.setText("Your Bio:" +user.getBio());
                                 binding.textViewInterests.setText("Interests:" + user.getInterests());
                                 binding.textViewUserName.setText(user.getUsername());
-                                //image display
+                                //image display TODO
                             }
                         }
                     }
