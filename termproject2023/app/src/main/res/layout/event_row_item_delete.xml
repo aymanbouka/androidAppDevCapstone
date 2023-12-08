@@ -68,6 +68,16 @@
                 app:layout_constraintEnd_toEndOf="@+id/textViewTimeOfEvent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTimeOfEvent" />
 
+            <Button
+                android:id="@+id/buttonNavigate"
+                android:layout_width="112dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="8dp"
+                android:text="Navigate"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textViewTimeOfEvent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTimeOfEvent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

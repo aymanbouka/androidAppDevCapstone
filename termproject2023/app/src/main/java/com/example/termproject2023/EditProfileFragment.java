@@ -71,7 +71,7 @@ FragmentEditProfileBinding binding;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+          //TODO
 //        binding.buttonUploadImage.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

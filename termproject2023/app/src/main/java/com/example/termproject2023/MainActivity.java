@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements EventsFragment.EventListener, EventFragment.ListOfPersonalEvents , EditProfileFragment.backToProfile{
+public class MainActivity extends AppCompatActivity implements EventsFragment.EventListener, EventFragment.ListOfPersonalEvents , EditProfileFragment.backToProfile, MyPersonalEventsFragment.SendlocationOfEvents{
 
     FirebaseAuth mAuth;
 
@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity implements EventsFragment.Ev
     public void goToPersonalEvents() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.contentView, new MyPersonalEventsFragment())
+                .commit();
+    }
+
+    @Override
+    public void getLocation(Event event) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contentView, MainHomeFragment.newInstance(event))
                 .commit();
     }
 

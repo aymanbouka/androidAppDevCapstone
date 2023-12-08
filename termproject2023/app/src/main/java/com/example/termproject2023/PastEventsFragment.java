@@ -1,6 +1,5 @@
 package com.example.termproject2023;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,17 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.termproject2023.databinding.FragmentMyPersonalEventsBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.termproject2023.databinding.FragmentPastEventsBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -36,21 +32,25 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class MyPersonalEventsFragment extends Fragment implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+public class PastEventsFragment extends Fragment {
+
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    FragmentMyPersonalEventsBinding binding;
+
+    FragmentPastEventsBinding binding;
 
 
     private Event mEvent;
 
     ArrayList<Event> events = new ArrayList<>();
 
-    public MyPersonalEventsFragment() {
+  PastEventsAdapter adapter;
+
+    public PastEventsFragment() {
         // Required empty public constructor
     }
-
 
 
 
@@ -61,52 +61,27 @@ public class MyPersonalEventsFragment extends Fragment implements BottomNavigati
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         getActivity().setTitle("My Personal Events");
         // Inflate the layout for this fragment
-        binding = FragmentMyPersonalEventsBinding.inflate(inflater, container, false);
+        binding = FragmentPastEventsBinding.inflate(inflater, container, false);
 
-        BottomNavigationView bottomNavigationView = binding.bottomNavigationView;
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+//        BottomNavigationView bottomNavigationView = binding.bottomNavigationView;
+//        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         return binding.getRoot();
-    }
-    MyPersonalEventsAdapter adapter;
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.home:
-                // Handle Home item selection
-                // For example, replace the current fragment with a HomeFragment
-                getFragmentManager().beginTransaction().replace(R.id.contentView, new MainHomeFragment()).commit();
-                return true;
-            case R.id.profile:
-                // Handle Profile item selection
-                // For example, replace the current fragment with a ProfileFragment
-                getFragmentManager().beginTransaction().replace(R.id.contentView, new ProfileFragment()).commit();
-                return true;
-            case R.id.events:
-                // Handle Events item selection
-                // For example, replace the current fragment with an EventsFragment
-                getFragmentManager().beginTransaction().replace(R.id.contentView, new EventsFragment()).commit();
-                return true;
-            default:
-                return false;
-        }
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new MyPersonalEventsAdapter();
+        adapter = new PastEventsFragment.PastEventsAdapter();
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(adapter);
 
-        db.collection("UsersEvents")
+        db.collection("UsersPastEvents")
                 .whereEqualTo("userId", mAuth.getCurrentUser().getUid()).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -131,18 +106,17 @@ public class MyPersonalEventsFragment extends Fragment implements BottomNavigati
 
     }
 
-
-    class MyPersonalEventsAdapter extends RecyclerView.Adapter<MyPersonalEventsAdapter.MyPersonalEventsHolder> {
+    class PastEventsAdapter extends RecyclerView.Adapter<PastEventsAdapter.PastEventsHolder> {
         @NonNull
         @Override
-        public MyPersonalEventsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public PastEventsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-            View view = getLayoutInflater().inflate(R.layout.event_row_item_delete, parent, false);
-            return new MyPersonalEventsHolder(view);
+            View view = getLayoutInflater().inflate(R.layout.event_row_item, parent, false);
+            return new PastEventsHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyPersonalEventsHolder holder, int position) {
+        public void onBindViewHolder(@NonNull PastEventsHolder holder, int position) {
             Event event = events.get(position);
             holder.setupUI(event);
         }
@@ -152,7 +126,7 @@ public class MyPersonalEventsFragment extends Fragment implements BottomNavigati
             return events.size();
         }
 
-        class MyPersonalEventsHolder extends RecyclerView.ViewHolder {
+        class PastEventsHolder extends RecyclerView.ViewHolder {
             Event mEvent;
             TextView textViewTitle;
 
@@ -160,51 +134,15 @@ public class MyPersonalEventsFragment extends Fragment implements BottomNavigati
 
             //newly added to document
             TextView textViewTimeOfEvent;
-            TextView textViewDescription;
 
             ImageView imageViewOfEvent;
 
-            public MyPersonalEventsHolder(@NonNull View itemView) {
+            public PastEventsHolder(@NonNull View itemView) {
                 super(itemView);
                 textViewTitle = itemView.findViewById(R.id.textViewTitle);
                 textViewLocationOfEvent = itemView.findViewById(R.id.textViewLocationOfEvent);
                 textViewTimeOfEvent = itemView.findViewById(R.id.textViewTimeOfEvent);
                 imageViewOfEvent = itemView.findViewById(R.id.imageViewOfEvent);
-                itemView.findViewById(R.id.buttonNavigate).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mListner.getLocation(mEvent);
-                    }
-                });
-
-                itemView.findViewById(R.id.buttonDelete).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                         CollectionReference collectionReference = db.collection("UsersEvents");
-
-                        // Method to delete a document without knowing its ID
-
-                            // Create a query to find the document based on a specific field
-                            Query query = collectionReference.whereEqualTo("guid", mEvent.getGuid());
-
-                            // Execute the query and delete the document(s) found
-                            query.get().addOnSuccessListener(queryDocumentSnapshots -> {
-                                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                                    documentSnapshot.getReference().delete();
-                                }
-                            }).addOnFailureListener(e -> {
-                                // Handle failure
-                                // e.g., Log the error or show a Toast message
-                            });
-
-
-                    }//end onClick
-
-
-                });
-
-
-
 
             }
 
@@ -229,21 +167,4 @@ public class MyPersonalEventsFragment extends Fragment implements BottomNavigati
 
 
 
-
-
-
-    SendlocationOfEvents mListner;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        mListner = (SendlocationOfEvents) context;
-    }
-
-
-    interface SendlocationOfEvents{
-        void getLocation(Event event);
-
-
-    }
-}
+}//end class
