@@ -105,7 +105,7 @@ public class EventsFragment extends Fragment implements BottomNavigationView.OnN
                     events.clear();
                     EventsXMLParser eventsXMLParser = new EventsXMLParser();
                      events = eventsXMLParser.parse(response.body().byteStream());
-                    Log.d("DEMO", "onResponse: this is an event: " + events + "this is an event");
+//                    Log.d("DEMO", "onResponse: this is an event: " + events + "this is an event");
 
 
 

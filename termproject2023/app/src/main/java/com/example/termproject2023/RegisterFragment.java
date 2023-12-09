@@ -76,9 +76,10 @@ public class RegisterFragment extends Fragment {
                                 Log.d("demo", "onComplete: Register in successful " + mAuth.getCurrentUser().getUid());
 
                                 Log.d("demo", "onComplete: Register in successful " + Thread.currentThread().getId());
-
-                                getFragmentManager().beginTransaction().replace(R.id.contentView, new MainHomeFragment())
+                                // yaha par onboarding ayega
+                                getFragmentManager().beginTransaction().replace(R.id.contentView, new UserOnboardingFragment())
                                         .commit();
+
 
                             }else{
                                 Log.d("demo", "onComplete: Error!!! ");
