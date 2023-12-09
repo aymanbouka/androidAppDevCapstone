@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    Onboarding content to be changed-->
     <string-array name="onboarding_titles">
         <item name = "title_1">Connect with friends</item>
         <item name = "title_2">Connect with friends</item>

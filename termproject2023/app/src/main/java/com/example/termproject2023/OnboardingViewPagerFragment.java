@@ -43,11 +43,11 @@ public class OnboardingViewPagerFragment extends Fragment {
 
     private List<Integer> getOnBoardAssets() {
         List<Integer> onBoardAssets = new ArrayList<>();
-        //changes images from here
-        onBoardAssets.add(R.drawable.onboarding);
-        onBoardAssets.add(R.drawable.onboarding);
-        onBoardAssets.add(R.drawable.onboarding);
-        onBoardAssets.add(R.drawable.onboarding);
+        //TODO : change onboarding images from here
+        onBoardAssets.add(R.drawable.viewevents);//1st
+        onBoardAssets.add(R.drawable.addevents);//2nd
+        onBoardAssets.add(R.drawable.maps);//3rd
+        onBoardAssets.add(R.drawable.party);//4th
         return onBoardAssets;
     }
 }
